@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class PlayerCollision : MonoBehaviour
 {
     [SerializeField] GameObject windowCompleted;
-    [SerializeField] AudioSource audioCollectItem, audioCollisionTrap, audioCollectHeart, audioComplete;
 
     [Header("Trap Info")]
     [SerializeField] bool collisionTrap;
@@ -39,18 +38,18 @@ public class PlayerCollision : MonoBehaviour
         if (collision.gameObject.CompareTag("Trap"))
         {
             collisionTrap = true;
-            audioCollisionTrap.Play();
+            AudioCtrl.Instance.PlaySound(AudioCtrl.Instance.AudioCollisionTrap);
         }
 
         if (collision.gameObject.CompareTag("Abyss"))
         {
-            audioCollisionTrap.Play();
+            AudioCtrl.Instance.PlaySound(AudioCtrl.Instance.AudioCollisionTrap);
             PlayerController.Instance.PlayerRD.SetHp(0);
         }
         if (collision.gameObject.CompareTag("Complete"))
         {
             PlayerController.Instance.PlayerMove.SetMoveForce(0f);
-            audioComplete.gameObject.SetActive(true);
+            AudioCtrl.Instance.PlaySound(AudioCtrl.Instance.AudioLevelComplete);
             StartCoroutine(waitForWin());
         }
             
@@ -67,15 +66,15 @@ public class PlayerCollision : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Heart"))
         {
-            audioCollectHeart.Play();
+            AudioCtrl.Instance.PlaySound(AudioCtrl.Instance.AudioCollectHeart);
             PlayerController.Instance.PlayerRD.Add();
         }
 
         if (collision.gameObject.CompareTag("Item"))
         {
-            PlayerController.Instance.starCtrl.count++; 
+            PlayerController.Instance.starCtrl.count++;
             //collisionItem = true;
-            audioCollectItem.Play();
+            AudioCtrl.Instance.PlaySound(AudioCtrl.Instance.AudioCollectItem);
         }
     }
 
@@ -86,7 +85,7 @@ public class PlayerCollision : MonoBehaviour
 
     IEnumerator waitForWin()
     {
-        yield return new WaitUntil(() => !audioComplete.isPlaying);
+        yield return new WaitUntil(() => !AudioCtrl.Instance.AudioLevelComplete.isPlaying);
         windowCompleted.SetActive(true);
         Invoke("Pause", 0.25f);
     }

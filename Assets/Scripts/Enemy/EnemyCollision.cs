@@ -9,7 +9,7 @@ public class EnemyCollision : MonoBehaviour
     [SerializeField] ParticleSystem _particleSystem;
     [SerializeField] EnemyCtrl enemyCtrl;
     [SerializeField] Animator animator;
-    [SerializeField] AudioSource audioDie, audioAttack, audioPartical;
+
     [SerializeField] Rigidbody2D body;
     [SerializeField] Collider2D collider2;
     [SerializeField] Vector2 dir = Vector2.zero;
@@ -31,20 +31,20 @@ public class EnemyCollision : MonoBehaviour
                     dying = true;
                     if (PlayerController.Instance.PlayerMove.Body.velocity.y > 0) return;
                     PlayerController.Instance.PlayerMove.Body.AddForce(new Vector2(0, 400f));
-                    audioDie.Play();
+                    AudioCtrl.Instance.PlaySound(AudioCtrl.Instance.AudioEnemyHit);
                     this.collider2.enabled = false;
                     StartCoroutine(WaitSoundDone());
                 }
                 else
                 {
-                    audioAttack.Play();
+                    AudioCtrl.Instance.PlaySound(AudioCtrl.Instance.AudioCollisionTrap);
                     PlayerController.Instance.setStateAnim(AnimationCtrl.AnimationState.IsHitted);
                     PlayerController.Instance.PlayerRD.Deduct();
                 }
             }
             else
             {
-                audioAttack.Play();
+                AudioCtrl.Instance.PlaySound(AudioCtrl.Instance.AudioCollisionTrap);
                 PlayerController.Instance.setStateAnim(AnimationCtrl.AnimationState.IsHitted);
                 PlayerController.Instance.PlayerRD.Deduct();
             }
@@ -52,10 +52,10 @@ public class EnemyCollision : MonoBehaviour
     }
     IEnumerator WaitSoundDone()
     {
-        yield return new WaitUntil(() => !audioDie.isPlaying);
+        yield return new WaitUntil(() => !AudioCtrl.Instance.AudioEnemyHit.isPlaying);
         spriteRenderer.sortingLayerID = 0;
         _particleSystem.gameObject.SetActive(true);
-        audioPartical.Play();
+        AudioCtrl.Instance.PlaySound(AudioCtrl.Instance.AudioEnemyDie);
         //Invoke("SetAlive", 0.6f);
     }
 
