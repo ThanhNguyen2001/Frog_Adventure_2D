@@ -6,11 +6,10 @@ public class EnemyAnimation1 : MonoBehaviour
 {
     [SerializeField] AnimationCtrl.EnemyAnimationState stateAnim = AnimationCtrl.EnemyAnimationState.Idle;
     [SerializeField] Animator animator;
-    [SerializeField] AnimationCtrl animationCtrl;
 
     private void Update()
     {
-        animationCtrl.GetEnemyAnimation(stateAnim, animator);
+        GameManager.Instance.AnimationCtrl.GetEnemyAnimation(stateAnim, animator);
     }
 
     public void SetAnim(AnimationCtrl.EnemyAnimationState stateAnim)

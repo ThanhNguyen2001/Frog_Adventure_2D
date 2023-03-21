@@ -7,6 +7,9 @@ public class InputManager : MonoBehaviour
     static InputManager instance;
     public static InputManager Instance { get => instance;}
 
+    [SerializeField] bool pause;
+    public bool Pause { get => pause; }
+
     [SerializeField] bool jump;
     public bool Jump { get => jump; }
 
@@ -33,6 +36,7 @@ public class InputManager : MonoBehaviour
 
     void InputController()
     {
+       this.pause = Input.GetKeyDown(KeyCode.Escape);
        this.jump = Input.GetKeyDown(KeyCode.Space);
        this.movementX = Input.GetAxisRaw("Horizontal");
        this.movementY = Input.GetAxisRaw("Vertical");

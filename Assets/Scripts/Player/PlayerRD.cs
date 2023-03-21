@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class PlayerRD : MonoBehaviour
 {
     [SerializeField] Rigidbody2D body;
-    [SerializeField] GameObject heartUI, windowGameOver;
     [SerializeField] int hp, maxHp;
     [SerializeField] bool isDeducted, isAdded;
     [SerializeField] List<GameObject> pools;
@@ -23,8 +22,8 @@ public class PlayerRD : MonoBehaviour
         if(isDeducted && this.hp >= 0)
         {
             isDeducted = false;
-            heartUI.transform.GetChild(hp).gameObject.SetActive(false);
-            pools.Add(heartUI.transform.GetChild(hp).gameObject);
+            UIManager.Instance.HeartUI.transform.GetChild(hp).gameObject.SetActive(false);
+            pools.Add(UIManager.Instance.HeartUI.transform.GetChild(hp).gameObject);
         }
         this.Die();
     }
@@ -67,7 +66,7 @@ public class PlayerRD : MonoBehaviour
     {
         yield return new WaitUntil(() => !AudioCtrl.Instance.AudioGameOver.isPlaying);
         this.transform.parent.gameObject.SetActive(false);
-        windowGameOver.SetActive(true);
+        UIManager.Instance.GameOverUI.SetActive(true);
         Invoke("Pause", 0.25f);
     }
     

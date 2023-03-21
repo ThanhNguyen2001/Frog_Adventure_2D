@@ -9,7 +9,7 @@ public class BtnCtrl : MonoBehaviour
 {
     [SerializeField] Animation startScence, endScence;
     [SerializeField] AudioSource audioClick;
-    [SerializeField] GameObject resumeWindow, exitWindow;
+    [SerializeField] GameObject exitWindow;
     [SerializeField] int levelCount;
     [SerializeField] List<AudioSource> musics;
     [SerializeField] List<AudioSource> sounds;
@@ -66,7 +66,7 @@ public class BtnCtrl : MonoBehaviour
 
     public void ClickResume()
     {      
-        resumeWindow.gameObject.SetActive(false);
+        UIManager.Instance.PauseUI.gameObject.SetActive(false);
         Time.timeScale = 1f;
     }
     public void ClickNext()

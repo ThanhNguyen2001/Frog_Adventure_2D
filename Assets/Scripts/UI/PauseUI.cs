@@ -5,20 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class PauseUI : MonoBehaviour
 {
-    [SerializeField] GameObject windowPause;
-
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (InputManager.Instance.Pause)
         {
-            if(windowPause.activeSelf)
+            if(UIManager.Instance.PauseUI.activeSelf)
             {
-                windowPause.SetActive(false);
+                UIManager.Instance.PauseUI.gameObject.SetActive(false);
                 Time.timeScale = 1f;
             }                  
             else
             {
-                windowPause.SetActive(true);
+                UIManager.Instance.PauseUI.gameObject.SetActive(true);
                 Invoke("Pause", 0.25f);
             }    
         }

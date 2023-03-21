@@ -6,12 +6,10 @@ using UnityEngine.UI;
 public class StarCtrl : MonoBehaviour
 {
     [SerializeField] public int fruitPerStar, starCount, maxStar = 3, count;
-    [SerializeField] GameObject starUI;
 
     private void Start()
     {
         PlayerPrefs.SetInt("StarCount", 0);
-        starUI = GameObject.Find("Stars");
     }
 
     private void Update()
@@ -29,7 +27,7 @@ public class StarCtrl : MonoBehaviour
         //}
         if (count >= fruitPerStar)
         {
-            starUI.transform.GetChild(starCount).gameObject.SetActive(true);
+            UIManager.Instance.StarUI.transform.GetChild(starCount).gameObject.SetActive(true);
             starCount++;
             PlayerPrefs.SetInt("StarCount", starCount);
             count = 0;

@@ -5,9 +5,6 @@ using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
 {
-    [SerializeField] AnimationCtrl animationCtrl;
-    public AnimationCtrl AnimationCtrl { get => animationCtrl; }
-
     [SerializeField] Animator animator;
     public Animator Animator { get => animator; }
 
@@ -17,12 +14,11 @@ public class PlayerAnimation : MonoBehaviour
     private void Start()
     {
         this.animator = GameObject.Find("Model").GetComponent<Animator>();
-        this.animationCtrl = GameObject.Find("AnimatorCtrl").GetComponent<AnimationCtrl>();
     }
 
     private void Update()
     {
-        animationCtrl.GetAnimation(stateAnim, animator);
+        GameManager.Instance.AnimationCtrl.GetAnimation(stateAnim, animator);
     }
 
     public void setStateAnim(AnimationCtrl.AnimationState stateAnim)

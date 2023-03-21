@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 public class EnemyRun : MonoBehaviour
 {
     [SerializeField] EnemyCtrl enemyCtrl;
+    [SerializeField] EnemyAnimation2 enemyAnimation2;
     [SerializeField] Rigidbody2D body;
     [SerializeField] Animator animator;
     [SerializeField] Transform point1, point2;
@@ -80,17 +81,17 @@ public class EnemyRun : MonoBehaviour
 
     void SetAnim()
     {
-        if(enemyCtrl.EnemyCollision.Dying) enemyCtrl.animation2.SetAnim(AnimationCtrl.EnemyAnimationState1.IsHitted);
+        if(enemyCtrl.EnemyCollision.Dying) enemyAnimation2.SetAnim(AnimationCtrl.EnemyAnimationState1.IsHitted);
         else
         {
-            if (Vector2.Distance(GameManager.Instance.Player.transform.position, this.transform.parent.position) <= 5f)             
-                    enemyCtrl.animation2.SetAnim(AnimationCtrl.EnemyAnimationState1.Run);
+            if (Vector2.Distance(GameManager.Instance.Player.transform.position, this.transform.parent.position) <= 5f)
+                enemyAnimation2.SetAnim(AnimationCtrl.EnemyAnimationState1.Run);
             else
             {
                 if (this.body.velocity.x != 0)
-                    enemyCtrl.animation2.SetAnim(AnimationCtrl.EnemyAnimationState1.Moving);
-                else              
-                    enemyCtrl.animation2.SetAnim(AnimationCtrl.EnemyAnimationState1.Idle);
+                    enemyAnimation2.SetAnim(AnimationCtrl.EnemyAnimationState1.Moving);
+                else
+                    enemyAnimation2.SetAnim(AnimationCtrl.EnemyAnimationState1.Idle);
             }
         }
         

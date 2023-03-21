@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 public class EnemyMoving : MonoBehaviour
 {
     [SerializeField] EnemyCtrl enemyCtrl;
+    [SerializeField] EnemyAnimation1 enemyAnimation1;
     [SerializeField] Rigidbody2D body;
     [SerializeField] Animator animator;
     [SerializeField] Transform point1, point2;
@@ -67,13 +68,13 @@ public class EnemyMoving : MonoBehaviour
     }
     void SetAnim()
     {
-        if(enemyCtrl.EnemyCollision.Dying) enemyCtrl.animation1.SetAnim(AnimationCtrl.EnemyAnimationState.IsHitted);
+        if(enemyCtrl.EnemyCollision.Dying) enemyAnimation1.SetAnim(AnimationCtrl.EnemyAnimationState.IsHitted);
         else
         {
             if (this.body.velocity.x != 0)
-                enemyCtrl.animation1.SetAnim(AnimationCtrl.EnemyAnimationState.Moving);
+                enemyAnimation1.SetAnim(AnimationCtrl.EnemyAnimationState.Moving);
             else
-                enemyCtrl.animation1.SetAnim(AnimationCtrl.EnemyAnimationState.Idle);
+                enemyAnimation1.SetAnim(AnimationCtrl.EnemyAnimationState.Idle);
         }
         
     }

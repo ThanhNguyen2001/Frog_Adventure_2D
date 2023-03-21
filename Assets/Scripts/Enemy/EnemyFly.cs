@@ -8,6 +8,7 @@ using UnityEngine.UIElements;
 public class EnemyFly : MonoBehaviour
 {
     [SerializeField] EnemyCtrl enemyCtrl;
+    [SerializeField] EnemyAnimation3 enemyAnimation3;
     [SerializeField] Rigidbody2D body;
     [SerializeField] Animator animator;
     [SerializeField] Transform point1, point2;
@@ -79,18 +80,18 @@ public class EnemyFly : MonoBehaviour
 
     void SetAnim()
     {
-        if(enemyCtrl.EnemyCollision.Dying) enemyCtrl.animation3.SetAnim(AnimationCtrl.EnemyAnimationState2.IsHitted);
+        if(enemyCtrl.EnemyCollision.Dying) enemyAnimation3.SetAnim(AnimationCtrl.EnemyAnimationState2.IsHitted);
         else
         {
             if (this.body.velocity.y >= 0)
             {
                 if (this.target == point2.position)
-                    enemyCtrl.animation3.SetAnim(AnimationCtrl.EnemyAnimationState2.Ground);
+                    enemyAnimation3.SetAnim(AnimationCtrl.EnemyAnimationState2.Ground);
                 else
-                    enemyCtrl.animation3.SetAnim(AnimationCtrl.EnemyAnimationState2.Idle);
+                    enemyAnimation3.SetAnim(AnimationCtrl.EnemyAnimationState2.Idle);
             }
             else
-                enemyCtrl.animation3.SetAnim(AnimationCtrl.EnemyAnimationState2.Fall);
+                enemyAnimation3.SetAnim(AnimationCtrl.EnemyAnimationState2.Fall);
         }
         
     }

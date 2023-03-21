@@ -5,13 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerCollision : MonoBehaviour
 {
-    [SerializeField] GameObject windowCompleted;
-
     [Header("Trap Info")]
     [SerializeField] bool collisionTrap;
-    //[SerializeField] bool collisionItem;
-
-    //public bool CollisionItem { get => collisionItem;}
 
     private void Update()
     {
@@ -49,7 +44,7 @@ public class PlayerCollision : MonoBehaviour
         if (collision.gameObject.CompareTag("Complete"))
         {
             PlayerController.Instance.PlayerMove.SetMoveForce(0f);
-            AudioCtrl.Instance.PlaySound(AudioCtrl.Instance.AudioLevelComplete);
+            AudioCtrl.Instance.AudioLevelComplete.gameObject.SetActive(true);
             StartCoroutine(waitForWin());
         }
             
@@ -62,6 +57,7 @@ public class PlayerCollision : MonoBehaviour
             this.transform.SetParent(null);
         }
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Heart"))
@@ -73,20 +69,14 @@ public class PlayerCollision : MonoBehaviour
         if (collision.gameObject.CompareTag("Item"))
         {
             PlayerController.Instance.starCtrl.count++;
-            //collisionItem = true;
             AudioCtrl.Instance.PlaySound(AudioCtrl.Instance.AudioCollectItem);
         }
     }
 
-    //public void SetCollisionItem(bool collisionItem)
-    //{
-    //    this.collisionItem = collisionItem;
-    //}
-
     IEnumerator waitForWin()
     {
         yield return new WaitUntil(() => !AudioCtrl.Instance.AudioLevelComplete.isPlaying);
-        windowCompleted.SetActive(true);
+        UIManager.Instance.LevelCompleteUI.SetActive(true);
         Invoke("Pause", 0.25f);
     }
 
