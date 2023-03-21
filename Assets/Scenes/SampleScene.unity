@@ -556,6 +556,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 80921208}
+  - component: {fileID: 80921209}
   m_Layer: 9
   m_Name: Animation
   m_TagString: Untagged
@@ -578,6 +579,21 @@ Transform:
   m_Father: {fileID: 380046786}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &80921209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 80921207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87cf178a6c1de0f4d8631d52a7470dd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationCtrl: {fileID: 1168117104}
+  animator: {fileID: 1676500342}
+  stateAnim: 4
 --- !u!1 &88763448
 GameObject:
   m_ObjectHideFlags: 0
@@ -1883,9 +1899,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acba82d98b3b67f429c23ee2dc6168c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationCtrl: {fileID: 1168117104}
-  animator: {fileID: 1676500342}
-  stateAnim: 0
+  playerAnimation: {fileID: 80921209}
   playerRD: {fileID: 1647506186}
   playerCollision: {fileID: 380046791}
   playerMove: {fileID: 1326036626}
@@ -11024,7 +11038,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1548708596
 Transform:
   m_ObjectHideFlags: 0
@@ -11051,7 +11065,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 62a83f0a954ed1e44b5f693832ca66c9, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
@@ -11363,7 +11377,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ef74b3030ee79e46b14ff6206d3fe39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioGameOver: {fileID: 1548708597}
   animator: {fileID: 1676500342}
   body: {fileID: 380046783}
   heartUI: {fileID: 528372257}
@@ -12196,7 +12209,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &1796338333
 AudioSource:
   m_ObjectHideFlags: 0
@@ -12208,7 +12221,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2112964b25a936d4ba7f789a460e3ae8, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 0.7
   m_Pitch: 1
   Loop: 0

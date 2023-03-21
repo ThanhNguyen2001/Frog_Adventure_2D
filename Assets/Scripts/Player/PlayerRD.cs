@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class PlayerRD : MonoBehaviour
 {
-    [SerializeField] AudioSource audioGameOver;
-    [SerializeField] Animator animator;
     [SerializeField] Rigidbody2D body;
     [SerializeField] GameObject heartUI, windowGameOver;
     [SerializeField] int hp, maxHp;
@@ -54,8 +52,8 @@ public class PlayerRD : MonoBehaviour
         if (hp <= 0)
         {
             this.body.simulated = false;
-            audioGameOver.gameObject.SetActive(true);
-            PlayerController.Instance.setStateAnim(AnimationCtrl.AnimationState.Desappear);
+            AudioCtrl.Instance.AudioGameOver.gameObject.SetActive(true);
+            PlayerController.Instance.PlayerAnimation.setStateAnim(AnimationCtrl.AnimationState.Desappear);
             StartCoroutine(waitForDie());
         }      
     }
@@ -67,7 +65,7 @@ public class PlayerRD : MonoBehaviour
 
     IEnumerator waitForDie()
     {
-        yield return new WaitUntil(() => !audioGameOver.isPlaying);
+        yield return new WaitUntil(() => !AudioCtrl.Instance.AudioGameOver.isPlaying);
         this.transform.parent.gameObject.SetActive(false);
         windowGameOver.SetActive(true);
         Invoke("Pause", 0.25f);

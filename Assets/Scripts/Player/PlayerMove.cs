@@ -7,7 +7,6 @@ public class PlayerMove : MonoBehaviour
 {
     //[SerializeField] ParticleSystem dust;
     [SerializeField] Rigidbody2D body;
-    [SerializeField] Animator animator;
     [SerializeField] float moveForce;
     [SerializeField] float jumpForce;
     [SerializeField] bool facingRight = true;
@@ -134,26 +133,26 @@ public class PlayerMove : MonoBehaviour
     }
     void StateAnimation()
     {
-        if (PlayerController.Instance.StateAnim == AnimationCtrl.AnimationState.IsHitted)
+        if (PlayerController.Instance.PlayerAnimation.StateAnim == AnimationCtrl.AnimationState.IsHitted)
         {
             timeCount += Time.deltaTime;
             if (timeCount < timeLimit) return;
             timeCount = 0;
         }        
 
-        if (this.body.velocity.x != 0) this.MovingAnim();
-        else this.IdleAnim();
+        if (this.body.velocity.x != 0) PlayerController.Instance.PlayerAnimation.MovingAnim();
+        else PlayerController.Instance.PlayerAnimation.IdleAnim();
 
         if (this.body.velocity.y > 0)
         {
             if (canDoubleJump)
-                this.JumpAnim();
+                PlayerController.Instance.PlayerAnimation.JumpAnim();
             else
-                this.DoubleJumpAnim();
+                PlayerController.Instance.PlayerAnimation.DoubleJumpAnim();
         }
-        else if (this.body.velocity.y < 0) this.FallAnim();
+        else if (this.body.velocity.y < 0) PlayerController.Instance.PlayerAnimation.FallAnim();
 
-        if (isWallSliding && !isGrounded) this.WallSlideAnim();
+        if (isWallSliding && !isGrounded) PlayerController.Instance.PlayerAnimation.WallSlideAnim();
     }
 
     public void SetMoveForce(float moveForce)
@@ -161,35 +160,35 @@ public class PlayerMove : MonoBehaviour
         this.moveForce = moveForce;
     }
 
-    void MovingAnim()
-    {
-        PlayerController.Instance.setStateAnim(AnimationCtrl.AnimationState.Moving);
-    }
+    //void MovingAnim()
+    //{
+    //    PlayerController.Instance.setStateAnim(AnimationCtrl.AnimationState.Moving);
+    //}
 
-    void IdleAnim()
-    {
-        PlayerController.Instance.setStateAnim(AnimationCtrl.AnimationState.Idle);
-    }
+    //void IdleAnim()
+    //{
+    //    PlayerController.Instance.setStateAnim(AnimationCtrl.AnimationState.Idle);
+    //}
 
-    void JumpAnim()
-    {
-        PlayerController.Instance.setStateAnim(AnimationCtrl.AnimationState.Jump);
-    }
+    //void JumpAnim()
+    //{
+    //    PlayerController.Instance.setStateAnim(AnimationCtrl.AnimationState.Jump);
+    //}
 
-    void DoubleJumpAnim()
-    {
-        PlayerController.Instance.setStateAnim(AnimationCtrl.AnimationState.DoubleJump);
-    }
+    //void DoubleJumpAnim()
+    //{
+    //    PlayerController.Instance.setStateAnim(AnimationCtrl.AnimationState.DoubleJump);
+    //}
 
-    void FallAnim()
-    {
-        PlayerController.Instance.setStateAnim(AnimationCtrl.AnimationState.Fall);
-    }
+    //void FallAnim()
+    //{
+    //    PlayerController.Instance.setStateAnim(AnimationCtrl.AnimationState.Fall);
+    //}
 
-    void WallSlideAnim()
-    {
-        PlayerController.Instance.setStateAnim(AnimationCtrl.AnimationState.WallSlide);
-    }
+    //void WallSlideAnim()
+    //{
+    //    PlayerController.Instance.setStateAnim(AnimationCtrl.AnimationState.WallSlide);
+    //}
 
     void CollisionCheck()
     {

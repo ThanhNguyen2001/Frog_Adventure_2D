@@ -38,14 +38,14 @@ public class EnemyCollision : MonoBehaviour
                 else
                 {
                     AudioCtrl.Instance.PlaySound(AudioCtrl.Instance.AudioCollisionTrap);
-                    PlayerController.Instance.setStateAnim(AnimationCtrl.AnimationState.IsHitted);
+                    PlayerController.Instance.PlayerAnimation.setStateAnim(AnimationCtrl.AnimationState.IsHitted);
                     PlayerController.Instance.PlayerRD.Deduct();
                 }
             }
             else
             {
                 AudioCtrl.Instance.PlaySound(AudioCtrl.Instance.AudioCollisionTrap);
-                PlayerController.Instance.setStateAnim(AnimationCtrl.AnimationState.IsHitted);
+                PlayerController.Instance.PlayerAnimation.setStateAnim(AnimationCtrl.AnimationState.IsHitted);
                 PlayerController.Instance.PlayerRD.Deduct();
             }
         }

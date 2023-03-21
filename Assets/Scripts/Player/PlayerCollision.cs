@@ -22,7 +22,7 @@ public class PlayerCollision : MonoBehaviour
     {
         if (collisionTrap)
         {
-            PlayerController.Instance.setStateAnim(AnimationCtrl.AnimationState.IsHitted);
+            PlayerController.Instance.PlayerAnimation.setStateAnim(AnimationCtrl.AnimationState.IsHitted);
             collisionTrap = false;
             PlayerController.Instance.PlayerRD.Deduct();
         }
