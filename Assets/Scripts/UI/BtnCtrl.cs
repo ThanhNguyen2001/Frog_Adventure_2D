@@ -11,12 +11,16 @@ public class BtnCtrl : MonoBehaviour
     [SerializeField] AudioSource audioClick;
     [SerializeField] GameObject resumeWindow, exitWindow;
     [SerializeField] int levelCount;
-    [SerializeField] AudioSource music;
+    [SerializeField] List<AudioSource> musics;
     [SerializeField] List<AudioSource> sounds;
     private void Start()
     {
         levelCount = PlayerPrefs.GetInt("LevelCount");
-        music.volume = PlayerPrefs.GetFloat("Music");
+        foreach (AudioSource music in musics)
+        {
+            music.volume = PlayerPrefs.GetFloat("Music");
+        }
+        
         foreach (AudioSource sound in sounds)
         {
             sound.volume = PlayerPrefs.GetFloat("Sound");

@@ -6,7 +6,6 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     //[SerializeField] ParticleSystem dust;
-    [SerializeField] AudioSource audioJump;
     [SerializeField] Rigidbody2D body;
     [SerializeField] Animator animator;
     [SerializeField] float moveForce;
@@ -125,13 +124,13 @@ public class PlayerMove : MonoBehaviour
         //this.body.velocity = new Vector2(this.body.velocity.x, 0);    
         //this.body.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
         this.body.velocity = new Vector2(this.body.velocity.x, jumpForce);
-        audioJump.Play();
+        AudioCtrl.Instance.PlaySound(AudioCtrl.Instance.AudioJump);
     }
 
     void WallJump()
     {
         this.body.velocity = new Vector2(wallJumpDirection.x * -facingDirection, jumpForce);
-        audioJump.Play();
+        AudioCtrl.Instance.PlaySound(AudioCtrl.Instance.AudioJump);
     }
     void StateAnimation()
     {

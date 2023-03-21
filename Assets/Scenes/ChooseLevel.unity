@@ -3201,8 +3201,10 @@ MonoBehaviour:
   endScence: {fileID: 805785289}
   audioClick: {fileID: 1367277800}
   resumeWindow: {fileID: 0}
+  exitWindow: {fileID: 0}
   levelCount: 0
-  music: {fileID: 811677662}
+  musics:
+  - {fileID: 811677662}
   sounds:
   - {fileID: 1367277800}
 --- !u!1 &1964874943
