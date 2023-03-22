@@ -31,20 +31,20 @@ public class EnemyCollision : MonoBehaviour
                     dying = true;
                     if (PlayerController.Instance.PlayerMove.Body.velocity.y > 0) return;
                     PlayerController.Instance.PlayerMove.Body.AddForce(new Vector2(0, 400f));
-                    AudioCtrl.Instance.PlaySound(AudioCtrl.Instance.AudioEnemyHit);
+                    AudioCtrl.Instance.GetAudioPool(AudioCtrl.Instance.AudioEnemyHit, AudioCtrl.Instance.AudioEnemyHits);
                     this.collider2.enabled = false;
                     StartCoroutine(WaitSoundDone());
                 }
                 else
                 {
-                    AudioCtrl.Instance.PlaySound(AudioCtrl.Instance.AudioCollisionTrap);
+                    AudioCtrl.Instance.GetAudioPool(AudioCtrl.Instance.AudioCollisionTrap, AudioCtrl.Instance.AudioCollisionTraps);
                     PlayerController.Instance.PlayerAnimation.setStateAnim(AnimationCtrl.AnimationState.IsHitted);
                     PlayerController.Instance.PlayerRD.Deduct();
                 }
             }
             else
             {
-                AudioCtrl.Instance.PlaySound(AudioCtrl.Instance.AudioCollisionTrap);
+                AudioCtrl.Instance.GetAudioPool(AudioCtrl.Instance.AudioCollisionTrap, AudioCtrl.Instance.AudioCollisionTraps);
                 PlayerController.Instance.PlayerAnimation.setStateAnim(AnimationCtrl.AnimationState.IsHitted);
                 PlayerController.Instance.PlayerRD.Deduct();
             }
@@ -52,10 +52,10 @@ public class EnemyCollision : MonoBehaviour
     }
     IEnumerator WaitSoundDone()
     {
-        yield return new WaitUntil(() => !AudioCtrl.Instance.AudioEnemyHit.isPlaying);
+        yield return new WaitForSeconds(0.3f);
         spriteRenderer.sortingLayerID = 0;
         _particleSystem.gameObject.SetActive(true);
-        AudioCtrl.Instance.PlaySound(AudioCtrl.Instance.AudioEnemyDie);
+        AudioCtrl.Instance.GetAudioPool(AudioCtrl.Instance.AudioEnemyDie, AudioCtrl.Instance.AudioEnemyDies);
         //Invoke("SetAlive", 0.6f);
     }
 

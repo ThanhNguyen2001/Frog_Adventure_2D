@@ -33,12 +33,12 @@ public class PlayerCollision : MonoBehaviour
         if (collision.gameObject.CompareTag("Trap"))
         {
             collisionTrap = true;
-            AudioCtrl.Instance.PlaySound(AudioCtrl.Instance.AudioCollisionTrap);
+            AudioCtrl.Instance.GetAudioPool(AudioCtrl.Instance.AudioCollisionTrap, AudioCtrl.Instance.AudioCollisionTraps);
         }
 
         if (collision.gameObject.CompareTag("Abyss"))
         {
-            AudioCtrl.Instance.PlaySound(AudioCtrl.Instance.AudioCollisionTrap);
+            AudioCtrl.Instance.GetAudioPool(AudioCtrl.Instance.AudioCollisionTrap, AudioCtrl.Instance.AudioCollisionTraps);
             PlayerController.Instance.PlayerRD.SetHp(0);
         }
         if (collision.gameObject.CompareTag("Complete"))
@@ -62,14 +62,14 @@ public class PlayerCollision : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Heart"))
         {
-            AudioCtrl.Instance.PlaySound(AudioCtrl.Instance.AudioCollectHeart);
+            AudioCtrl.Instance.GetAudioPool(AudioCtrl.Instance.AudioCollectHeart, AudioCtrl.Instance.AudioCollectHearts);
             PlayerController.Instance.PlayerRD.Add();
         }
 
         if (collision.gameObject.CompareTag("Item"))
         {
             PlayerController.Instance.starCtrl.count++;
-            AudioCtrl.Instance.PlaySound(AudioCtrl.Instance.AudioCollectItem);
+            AudioCtrl.Instance.GetAudioPool(AudioCtrl.Instance.AudioCollectItem, AudioCtrl.Instance.AudioCollectItems);
         }
     }
 

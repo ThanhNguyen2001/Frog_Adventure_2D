@@ -18,9 +18,18 @@ public class AudioCtrl : MonoBehaviour
         }
     }
     #endregion
-    [SerializeField] AudioSource audioJump, audioCollectItem, audioCollectHeart, 
-        audioCollisionTrap, audioGameOver, audioLevelComplete, audioEnemyHit, audioEnemyDie, 
+    [SerializeField] Transform audioHolder;
+
+    [SerializeField] 
+    AudioSource audioJump, audioCollectItem, audioCollectHeart, 
+        audioCollisionTrap, audioGameOver, audioLevelComplete, 
+        audioEnemyHit, audioEnemyDie, 
         audioLevel1, audioLevel2, audioLevel3;
+    
+    [SerializeField]
+    List<AudioSource> audioJumps, audioCollectItems, audioCollectHearts,
+        audioEnemyHits, audioEnemyDies, audioCollisionTraps;
+
     public AudioSource AudioJump { get => audioJump; }
     public AudioSource AudioCollectItem { get => audioCollectItem; }
     public AudioSource AudioCollectHeart { get => audioCollectHeart; }
@@ -29,6 +38,13 @@ public class AudioCtrl : MonoBehaviour
     public AudioSource AudioLevelComplete { get => audioLevelComplete; }
     public AudioSource AudioEnemyHit { get => audioEnemyHit; }
     public AudioSource AudioEnemyDie { get => audioEnemyDie; }
+
+    public List<AudioSource> AudioJumps { get => audioJumps; }
+    public List<AudioSource> AudioCollectItems { get => audioCollectItems; }
+    public List<AudioSource> AudioCollectHearts { get => audioCollectHearts; }
+    public List<AudioSource> AudioCollisionTraps { get => audioCollisionTraps; }
+    public List<AudioSource> AudioEnemyHits { get => audioEnemyHits; }
+    public List<AudioSource> AudioEnemyDies { get => audioEnemyDies; }
 
     private void Start()
     {
@@ -43,5 +59,26 @@ public class AudioCtrl : MonoBehaviour
     public void PlaySound(AudioSource audio)
     {
         audio.Play();
+    }
+
+    public AudioSource GetAudio(AudioSource audio, List<AudioSource> audios)
+    {
+        foreach (AudioSource audioSource in audios)
+        {
+            if (audioSource.gameObject.activeSelf)
+                continue;
+            return audioSource;
+        }
+        AudioSource a = Instantiate<AudioSource>(audio, this.transform.position, Quaternion.identity, audioHolder);
+        a.gameObject.SetActive(false);
+        audios.Add(a);
+        return a;
+    }
+
+    public void GetAudioPool(AudioSource audio, List<AudioSource> audios)
+    {
+        AudioSource ad = GetAudio(audio, audios);
+        ad.transform.position = this.transform.position;
+        ad.gameObject.SetActive(true);
     }
 }

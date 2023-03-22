@@ -13,19 +13,23 @@ public class BtnCtrl : MonoBehaviour
     [SerializeField] int levelCount;
     [SerializeField] List<AudioSource> musics;
     [SerializeField] List<AudioSource> sounds;
-    private void Start()
+
+    private void Awake()
     {
-        levelCount = PlayerPrefs.GetInt("LevelCount");
         foreach (AudioSource music in musics)
         {
             music.volume = PlayerPrefs.GetFloat("Music");
         }
-        
+
         foreach (AudioSource sound in sounds)
         {
             sound.volume = PlayerPrefs.GetFloat("Sound");
         }
-            
+
+    }
+    private void Start()
+    {
+        levelCount = PlayerPrefs.GetInt("LevelCount");    
     }
 
     public void ClickPlay()

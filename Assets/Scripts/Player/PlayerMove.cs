@@ -123,13 +123,14 @@ public class PlayerMove : MonoBehaviour
         //this.body.velocity = new Vector2(this.body.velocity.x, 0);    
         //this.body.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
         this.body.velocity = new Vector2(this.body.velocity.x, jumpForce);
-        AudioCtrl.Instance.PlaySound(AudioCtrl.Instance.AudioJump);
+        //AudioCtrl.Instance.PlaySound(AudioCtrl.Instance.AudioJump);
+        AudioCtrl.Instance.GetAudioPool(AudioCtrl.Instance.AudioJump, AudioCtrl.Instance.AudioJumps);
     }
 
     void WallJump()
     {
         this.body.velocity = new Vector2(wallJumpDirection.x * -facingDirection, jumpForce);
-        AudioCtrl.Instance.PlaySound(AudioCtrl.Instance.AudioJump);
+        AudioCtrl.Instance.GetAudioPool(AudioCtrl.Instance.AudioJump, AudioCtrl.Instance.AudioJumps);
     }
     void StateAnimation()
     {
@@ -159,36 +160,6 @@ public class PlayerMove : MonoBehaviour
     {
         this.moveForce = moveForce;
     }
-
-    //void MovingAnim()
-    //{
-    //    PlayerController.Instance.setStateAnim(AnimationCtrl.AnimationState.Moving);
-    //}
-
-    //void IdleAnim()
-    //{
-    //    PlayerController.Instance.setStateAnim(AnimationCtrl.AnimationState.Idle);
-    //}
-
-    //void JumpAnim()
-    //{
-    //    PlayerController.Instance.setStateAnim(AnimationCtrl.AnimationState.Jump);
-    //}
-
-    //void DoubleJumpAnim()
-    //{
-    //    PlayerController.Instance.setStateAnim(AnimationCtrl.AnimationState.DoubleJump);
-    //}
-
-    //void FallAnim()
-    //{
-    //    PlayerController.Instance.setStateAnim(AnimationCtrl.AnimationState.Fall);
-    //}
-
-    //void WallSlideAnim()
-    //{
-    //    PlayerController.Instance.setStateAnim(AnimationCtrl.AnimationState.WallSlide);
-    //}
 
     void CollisionCheck()
     {
