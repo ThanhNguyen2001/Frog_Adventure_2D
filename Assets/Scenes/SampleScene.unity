@@ -1910,7 +1910,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.016321182, y: -0.19567633}
+  m_Offset: {x: 0.022921085, y: -0.19567633}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1921,7 +1921,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.62460804, y: 0.8527479}
+  m_Size: {x: 0.61140823, y: 0.8527479}
   m_EdgeRadius: 0
 --- !u!114 &380046791
 MonoBehaviour:
@@ -8815,11 +8815,11 @@ RectTransform:
   m_Children:
   - {fileID: 2139930815}
   m_Father: {fileID: 2052233558}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 275, y: -50}
+  m_AnchoredPosition: {x: 475, y: -50}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &937823067
@@ -9661,7 +9661,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -212, y: -291}
+  m_AnchoredPosition: {x: -217, y: -291}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1083488072
@@ -10251,6 +10251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03f9bde6348080049bb588fd2f92fa63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pause: 0
   jump: 0
   movementX: 0
   movementY: 0
@@ -10629,7 +10630,7 @@ MonoBehaviour:
     m_Bits: 64
   isGrounded: 0
   canDoubleJump: 0
-  wallCheckDistance: 0.45
+  wallCheckDistance: 0.4
   wallSlideSpeed: 0.1
   isWallDetected: 0
   canWallSlide: 0
@@ -12628,11 +12629,11 @@ RectTransform:
   m_Children:
   - {fileID: 1623469430}
   m_Father: {fileID: 2052233558}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 475, y: -50}
+  m_AnchoredPosition: {x: 275, y: -50}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1892463231
@@ -13240,14 +13241,14 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1673673892}
-  - {fileID: 937823066}
   - {fileID: 1892463230}
+  - {fileID: 937823066}
   m_Father: {fileID: 1257036771}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -211.99994, y: -291}
+  m_AnchoredPosition: {x: -217, y: -291}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2052233559

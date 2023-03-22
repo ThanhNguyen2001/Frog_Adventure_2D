@@ -355,7 +355,6 @@ MonoBehaviour:
   startScence: {fileID: 1446561553}
   endScence: {fileID: 1002240640}
   audioClick: {fileID: 192330934}
-  resumeWindow: {fileID: 0}
   exitWindow: {fileID: 0}
   levelCount: 0
   musics:
@@ -463,9 +462,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5752cf438bdf1a04191659b6e6d7bc86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audios: {fileID: 1795919534}
-  soundEffect:
-  - {fileID: 192330934}
+  music: {fileID: 1795919534}
+  sound: {fileID: 192330934}
   musicSlider: {fileID: 849603593}
   soundSlider: {fileID: 1329911146}
 --- !u!1 &285332731

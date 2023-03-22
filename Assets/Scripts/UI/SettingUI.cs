@@ -6,8 +6,7 @@ using UnityEngine.UI;
 
 public class SettingUI : MonoBehaviour
 {
-    [SerializeField] AudioSource audios;
-    [SerializeField] List<AudioSource> soundEffect;
+    [SerializeField] AudioSource music, sound;
     [SerializeField] Slider musicSlider, soundSlider;
 
     private void Start()
@@ -18,17 +17,14 @@ public class SettingUI : MonoBehaviour
 
     public void ChangeMusic()
     {
-        audios.volume = musicSlider.value;
-        PlayerPrefs.SetFloat("Music", audios.volume);     
+        music.volume = musicSlider.value;
+        PlayerPrefs.SetFloat("Music", musicSlider.value);     
     }
 
     public void ChangeSound()
     {
-        foreach (AudioSource sound in soundEffect)
-        {
-            sound.volume = soundSlider.value;
-            PlayerPrefs.SetFloat("Sound", sound.volume);
-        }
+        sound.volume = soundSlider.value;
+        PlayerPrefs.SetFloat("Sound", soundSlider.value);
     }
 
 
