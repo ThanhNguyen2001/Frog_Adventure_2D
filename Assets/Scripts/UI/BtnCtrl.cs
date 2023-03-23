@@ -127,8 +127,8 @@ public class BtnCtrl : MonoBehaviour
 
     void LoadCurrentScence()
     {
-        SceneManager.LoadScene(2);
-        SceneManager.LoadScene(2 + levelCount, LoadSceneMode.Additive);
+        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(3 + levelCount, LoadSceneMode.Additive);
     }
     void LoadNextScence()
     {
@@ -148,23 +148,23 @@ public class BtnCtrl : MonoBehaviour
 
     void LoadScence6()
     {
-        SceneManager.LoadScene(6);
+        SceneManager.LoadScene(2);
     }
     void LoadScenceLV1()
     {
-        SceneManager.LoadScene(2);
-        SceneManager.LoadScene(3, LoadSceneMode.Additive);
+        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(4, LoadSceneMode.Additive);
     }
 
     void LoadScence2LV2()
     {
-        SceneManager.LoadScene(2);
-        SceneManager.LoadScene(4, LoadSceneMode.Additive);
+        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(5, LoadSceneMode.Additive);
     }
     void LoadScence2LV3()
     {
-        SceneManager.LoadScene(2);
-        SceneManager.LoadScene(5, LoadSceneMode.Additive);
+        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(6, LoadSceneMode.Additive);
     }
     public void AudioBtnClick()
     {

@@ -52656,9 +52656,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGrounded: 0
   enemyCollision: {fileID: 8859913077720770978}
-  animation1: {fileID: 3074193945764084353}
-  animation2: {fileID: 0}
-  animation3: {fileID: 0}
 --- !u!114 &8859913077720770978
 MonoBehaviour:
   m_ObjectHideFlags: 0

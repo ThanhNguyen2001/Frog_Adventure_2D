@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    //[SerializeField] ParticleSystem dust;
+    [SerializeField] ParticleSystem dust;
     [SerializeField] Rigidbody2D body;
     [SerializeField] float moveForce;
     [SerializeField] float jumpForce;
@@ -75,6 +75,8 @@ public class PlayerMove : MonoBehaviour
     {
         float movementX = InputManager.Instance.MovementX;
         this.body.velocity = new Vector2(moveForce * movementX, this.body.velocity.y);
+        if (InputManager.Instance.MovementX != 0 && isGrounded)
+            dust.Play();
     }
 
     void FlipController()
@@ -85,6 +87,7 @@ public class PlayerMove : MonoBehaviour
             this.Flip();
         //if (this.body.velocity.x != 0 && isGrounded) dust.gameObject.SetActive(true);
         //else dust.gameObject.SetActive(false);
+
     }
 
     void Flip()
@@ -119,7 +122,8 @@ public class PlayerMove : MonoBehaviour
     }
 
     void Jump()
-    {           
+    {
+        dust.Play();
         //this.body.velocity = new Vector2(this.body.velocity.x, 0);    
         //this.body.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
         this.body.velocity = new Vector2(this.body.velocity.x, jumpForce);
@@ -129,6 +133,7 @@ public class PlayerMove : MonoBehaviour
 
     void WallJump()
     {
+        dust.Play();
         this.body.velocity = new Vector2(wallJumpDirection.x * -facingDirection, jumpForce);
         AudioCtrl.Instance.GetAudioPool(AudioCtrl.Instance.AudioJump, AudioCtrl.Instance.AudioJumps);
     }

@@ -4,25 +4,26 @@ using UnityEngine;
 
 public class LoadMap : MonoBehaviour
 {
-    [SerializeField] List<GameObject> enemy;
-    [SerializeField] List<GameObject> trap;
-    [SerializeField] List<GameObject> item;
-    void Update()
+    [SerializeField] List<GameObject> enemies;
+    [SerializeField] List<GameObject> traps;
+
+    private void Update()
     {
-        this.CheckList(enemy);
-        this.CheckList(trap);     
-        this.CheckList(item);
+        this.CheckDistance(enemies);
+        this.CheckDistance(traps);
     }
 
-    void CheckList(List<GameObject> list)
+    void CheckDistance(List<GameObject> objs)
     {
         Vector3 posLoad = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
-        foreach (GameObject obj in list)
+
+        foreach(GameObject obj in objs)
         {
             if (obj.transform.position.x >= posLoad.x + 4f || obj.transform.position.x <= posLoad.x - 22f)
                 obj.gameObject.SetActive(false);
             else
-                obj.gameObject.SetActive(true);          
-        }
+                obj.gameObject.SetActive(true);
+        }          
     }
 }
+ 
