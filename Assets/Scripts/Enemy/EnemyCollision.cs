@@ -5,19 +5,19 @@ using UnityEngine;
 
 public class EnemyCollision : MonoBehaviour
 {
-    [SerializeField] SpriteRenderer spriteRenderer;
-    [SerializeField] ParticleSystem _particleSystem;
-    [SerializeField] EnemyCtrl enemyCtrl;
-    [SerializeField] Animator animator;
+    [SerializeField] protected SpriteRenderer spriteRenderer;
+    [SerializeField] protected ParticleSystem _particleSystem;
+    [SerializeField] protected EnemyCtrl enemyCtrl;
+    [SerializeField] protected Animator animator;
 
-    [SerializeField] Rigidbody2D body;
-    [SerializeField] Collider2D collider2;
-    [SerializeField] Vector2 dir = Vector2.zero;
-    [SerializeField] bool dying;
+    [SerializeField] protected Rigidbody2D body;
+    [SerializeField] protected Collider2D collider2;
+    [SerializeField] protected Vector2 dir = Vector2.zero;
+    [SerializeField] protected bool dying;
 
     public bool Dying { get => dying; }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    protected void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
@@ -50,7 +50,7 @@ public class EnemyCollision : MonoBehaviour
             }
         }
     }
-    IEnumerator WaitSoundDone()
+    protected IEnumerator WaitSoundDone()
     {
         yield return new WaitForSeconds(0.3f);
         spriteRenderer.sortingLayerID = 0;

@@ -76,13 +76,13 @@ public class BtnCtrl : MonoBehaviour
     public void ClickNext()
     {
         
-        if(levelCount < 3)
+        if(levelCount < 4)
         {
             levelCount++;
             PlayerPrefs.SetInt("LevelCount", levelCount);
         }             
         else
-            PlayerPrefs.SetInt("LevelCount", 3);
+            PlayerPrefs.SetInt("LevelCount", 4);
         endScence.Play();
         Invoke("LoadNextScence", 1);
         Time.timeScale = 1f;

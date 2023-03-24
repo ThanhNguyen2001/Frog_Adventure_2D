@@ -96,4 +96,49 @@ public class AnimationCtrl : MonoBehaviour
         Idle,
         IsHitted
     }
+
+    public void GetEnemyAnimation3(EnemyAnimationState3 anim, Animator animator)
+    {
+        for (int i = 0; i <= (int)EnemyAnimationState3.IsHitted; i++)
+        {
+            string animName = ((EnemyAnimationState3)i).ToString();
+            if (animName == anim.ToString())
+            {
+                animator.SetBool(animName, true);
+                continue;
+            }
+            animator.SetBool(animName, false);
+        }
+    }
+
+    public enum EnemyAnimationState3
+    {
+        CeilingOut,
+        CeilingIn,
+        Flying,
+        Idle,
+        IsHitted
+    }
+
+    public void GetEnemyAnimation4(EnemyAnimationState4 anim, Animator animator)
+    {
+        for (int i = 0; i <= (int)EnemyAnimationState4.IsHitted; i++)
+        {
+            string animName = ((EnemyAnimationState4)i).ToString();
+            if (animName == anim.ToString())
+            {
+                animator.SetBool(animName, true);
+                continue;
+            }
+            animator.SetBool(animName, false);
+        }
+    }
+
+    public enum EnemyAnimationState4
+    {
+        HitWall,
+        Run,
+        Idle,
+        IsHitted
+    }
 }
