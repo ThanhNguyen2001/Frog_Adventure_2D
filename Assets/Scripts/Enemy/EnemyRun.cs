@@ -36,7 +36,7 @@ public class EnemyRun : MonoBehaviour
         Vector3 dir = target - this.transform.parent.position;
         dir.Normalize();
 
-        this.body.velocity = dir * moveForce;
+        this.body.velocity = new Vector2(moveForce, 0f) * dir;
 
         this.SetAnim();
         this.Flip();
@@ -50,7 +50,8 @@ public class EnemyRun : MonoBehaviour
             return;
         }
 
-        if (Vector2.Distance(GameManager.Instance.Player.transform.position, this.transform.parent.position) <= 7f)
+        if ((GameManager.Instance.Player.transform.position.y - this.transform.parent.transform.parent.position.y > -1f) && (GameManager.Instance.Player.transform.position.y - this.transform.parent.transform.parent.position.y < 3.5f) &&
+            Mathf.Abs(GameManager.Instance.Player.transform.position.x - this.transform.parent.transform.parent.position.x) < 5f)
         {
             timeLimit = 0;
             moveForce = moveForceCurrent + 5f;
@@ -84,7 +85,8 @@ public class EnemyRun : MonoBehaviour
         if(enemyCtrl.EnemyCollision.Dying) enemyAnimation2.SetAnim(AnimationCtrl.EnemyAnimationState1.IsHitted);
         else
         {
-            if (Vector2.Distance(GameManager.Instance.Player.transform.position, this.transform.parent.position) <= 5f)
+            if ((GameManager.Instance.Player.transform.position.y - this.transform.parent.transform.parent.position.y > -1f) && (GameManager.Instance.Player.transform.position.y - this.transform.parent.transform.parent.position.y < 3.5f) &&
+            Mathf.Abs(GameManager.Instance.Player.transform.position.x - this.transform.parent.transform.parent.position.x) < 5f)
                 enemyAnimation2.SetAnim(AnimationCtrl.EnemyAnimationState1.Run);
             else
             {

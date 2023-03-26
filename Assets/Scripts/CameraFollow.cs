@@ -20,13 +20,21 @@ public class CameraFollow : MonoBehaviour
             this.endFollowY = 20f;
         }
             
-        else
+        else if (PlayerPrefs.GetInt("LevelCount") == 3)
         {
             this.endFollowX = 110f;
             this.endFollowY = 2.6f;
             this.startFollowY = -8f;
         }
-            
+
+        else
+        {
+            this.endFollowX = 97.5f;
+            this.endFollowY = 27.31f;      
+        }
+        
+
+
     }
     void Update()
     {

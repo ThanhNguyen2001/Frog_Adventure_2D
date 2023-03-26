@@ -24,7 +24,7 @@ public class AudioCtrl : MonoBehaviour
     AudioSource audioJump, audioCollectItem, audioCollectHeart, 
         audioCollisionTrap, audioGameOver, audioLevelComplete, 
         audioEnemyHit, audioEnemyDie, 
-        audioLevel1, audioLevel2, audioLevel3;
+        audioLevel1, audioLevel2, audioLevel3, audioLevel4;
     
     [SerializeField]
     List<AudioSource> audioJumps, audioCollectItems, audioCollectHearts,
@@ -52,8 +52,10 @@ public class AudioCtrl : MonoBehaviour
             audioLevel1.gameObject.SetActive(true);
         else if(PlayerPrefs.GetInt("LevelCount") == 2)
             audioLevel2.gameObject.SetActive(true);
-        else
+        else if(PlayerPrefs.GetInt("LevelCount") == 3)
             audioLevel3.gameObject.SetActive(true);
+        else
+            audioLevel4.gameObject.SetActive(true);
     }
 
     public void PlaySound(AudioSource audio)

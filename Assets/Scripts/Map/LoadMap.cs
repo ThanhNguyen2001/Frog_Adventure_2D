@@ -19,7 +19,8 @@ public class LoadMap : MonoBehaviour
 
         foreach(GameObject obj in objs)
         {
-            if (obj.transform.position.x >= posLoad.x + 4f || obj.transform.position.x <= posLoad.x - 22f)
+            if ((obj.transform.position.x >= posLoad.x + 4f || obj.transform.position.x <= posLoad.x - 22f) ||
+                (obj.transform.position.y >= posLoad.y + 4f || obj.transform.position.y <= posLoad.y - 12f))
                 obj.gameObject.SetActive(false);
             else
                 obj.gameObject.SetActive(true);

@@ -35,7 +35,7 @@ public class EnemyMoving : MonoBehaviour
         Vector3 dir = target - this.transform.parent.position;
         dir.Normalize();
 
-        this.body.velocity = dir * moveForce;
+        this.body.velocity = new Vector2(moveForce, 0f) * dir;
 
         this.SetAnim();
         this.Flip();

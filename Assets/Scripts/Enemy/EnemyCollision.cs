@@ -29,7 +29,6 @@ public class EnemyCollision : MonoBehaviour
                 if(collision.transform.position.y > this.transform.position.y)
                 {
                     dying = true;
-                    if (PlayerController.Instance.PlayerMove.Body.velocity.y > 0) return;
                     PlayerController.Instance.PlayerMove.Body.AddForce(new Vector2(0, 400f));
                     AudioCtrl.Instance.GetAudioPool(AudioCtrl.Instance.AudioEnemyHit, AudioCtrl.Instance.AudioEnemyHits);
                     this.collider2.enabled = false;

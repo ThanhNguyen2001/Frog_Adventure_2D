@@ -27,8 +27,14 @@ public class EnemyFollow : MonoBehaviour
 
     void Moving()
     {
-        if((GameManager.Instance.Player.transform.position.y - posOld.y > -7f) && (GameManager.Instance.Player.transform.position.y - posOld.y < 0) &&
-            (GameManager.Instance.Player.transform.position.x - posOld.x > -7f) && (GameManager.Instance.Player.transform.position.x - posOld.x < 7f))
+        if (enemyCtrl.EnemyCollision.Dying)
+        {
+            this.body.velocity = new Vector2(0f, 0f);
+            return;
+        }
+
+        if ((GameManager.Instance.Player.transform.position.y - posOld.y > -5.5f) && (GameManager.Instance.Player.transform.position.y - posOld.y < 0) &&
+            (GameManager.Instance.Player.transform.position.x - posOld.x > -5.5f) && (GameManager.Instance.Player.transform.position.x - posOld.x < 5.5f))
         {
             dir = GameManager.Instance.Player.transform.position - this.transform.position;
             moveForce = moveForceCurrent;

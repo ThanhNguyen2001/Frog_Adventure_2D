@@ -125,6 +125,14 @@ public class BtnCtrl : MonoBehaviour
         Invoke("LoadScence2LV3", 1);
     }
 
+    public void ClickLevel4()
+    {
+        levelCount = 4;
+        PlayerPrefs.SetInt("LevelCount", levelCount);
+        endScence.Play();
+        Invoke("LoadScence2LV4", 1);
+    }
+
     void LoadCurrentScence()
     {
         SceneManager.LoadScene(3);
@@ -165,6 +173,12 @@ public class BtnCtrl : MonoBehaviour
     {
         SceneManager.LoadScene(3);
         SceneManager.LoadScene(6, LoadSceneMode.Additive);
+    }
+
+    void LoadScence2LV4()
+    {
+        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(7, LoadSceneMode.Additive);
     }
     public void AudioBtnClick()
     {
