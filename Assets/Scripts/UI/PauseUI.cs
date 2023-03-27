@@ -9,6 +9,7 @@ public class PauseUI : MonoBehaviour
     {
         if (InputManager.Instance.Pause)
         {
+            if(UIManager.Instance.LevelCompleteUI.activeSelf || UIManager.Instance.GameOverUI.activeSelf) return;
             if(UIManager.Instance.PauseUI.activeSelf)
             {
                 UIManager.Instance.PauseUI.gameObject.SetActive(false);

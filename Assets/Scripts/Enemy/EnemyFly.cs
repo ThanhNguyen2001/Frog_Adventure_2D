@@ -14,8 +14,7 @@ public class EnemyFly : MonoBehaviour
     [SerializeField] Transform point1, point2;
     [SerializeField] Vector3 target = Vector3.zero;
     [SerializeField] float moveForce, moveForceCurrent;
-    [SerializeField] bool facingRight = true;
-    [SerializeField] float timeCount, timeLimit, timeLimitOld;
+    [SerializeField] float timeCount, timeLimit;
 
     private void Start()
     {
@@ -23,7 +22,6 @@ public class EnemyFly : MonoBehaviour
         target = point1.position;
       
         moveForceCurrent = moveForce;
-        timeLimitOld = timeLimit;
     }
 
     private void Update()
@@ -40,8 +38,7 @@ public class EnemyFly : MonoBehaviour
 
         this.body.velocity = dir * moveForce;
 
-        this.SetAnim();
-        this.Flip();
+        this.SetAnim();;
     }
 
     void CheckDistance(Transform point1, Transform point2)
@@ -94,19 +91,5 @@ public class EnemyFly : MonoBehaviour
                 enemyAnimation3.SetAnim(AnimationCtrl.EnemyAnimationState2.Fall);
         }
         
-    }
-
-    void Flip()
-    {
-        if (this.body.velocity.x > 0 && !facingRight)
-            this.FipX();
-        else if(this.body.velocity.x < 0 && facingRight)
-            this.FipX();
-    }
-
-    void FipX()
-    {
-        facingRight = !facingRight;
-        this.transform.parent.Rotate(0, 180, 0);
-    }   
+    }  
 }

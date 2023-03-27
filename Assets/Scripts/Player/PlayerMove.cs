@@ -85,9 +85,6 @@ public class PlayerMove : MonoBehaviour
             this.Flip();
         else if (this.body.velocity.x < 0 && facingRight)
             this.Flip();
-        //if (this.body.velocity.x != 0 && isGrounded) dust.gameObject.SetActive(true);
-        //else dust.gameObject.SetActive(false);
-
     }
 
     void Flip()
@@ -124,10 +121,7 @@ public class PlayerMove : MonoBehaviour
     void Jump()
     {
         dust.Play();
-        //this.body.velocity = new Vector2(this.body.velocity.x, 0);    
-        //this.body.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
         this.body.velocity = new Vector2(this.body.velocity.x, jumpForce);
-        //AudioCtrl.Instance.PlaySound(AudioCtrl.Instance.AudioJump);
         AudioCtrl.Instance.GetAudioPool(AudioCtrl.Instance.AudioJump, AudioCtrl.Instance.AudioJumps);
     }
 

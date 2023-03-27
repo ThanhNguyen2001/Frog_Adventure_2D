@@ -15,6 +15,7 @@ public class ActiveAudio : MonoBehaviour
     {
         StartCoroutine(waitSoundDone());
     }
+
     IEnumerator waitSoundDone()
     {
         yield return new WaitUntil(() => !audioSource.isPlaying);

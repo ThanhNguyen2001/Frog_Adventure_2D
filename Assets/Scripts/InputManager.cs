@@ -4,8 +4,21 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
+    #region Singleton
     static InputManager instance;
     public static InputManager Instance { get => instance;}
+
+    private void Awake()
+    {
+        if(instance == null) instance = this;
+        else
+        {
+            Destroy(this.gameObject);
+            Debug.LogWarning("Other '" + this.gameObject.name + "' has been deleted !");
+        }
+    }
+    #endregion
+
 
     [SerializeField] bool pause;
     public bool Pause { get => pause; }
@@ -18,16 +31,6 @@ public class InputManager : MonoBehaviour
 
     [SerializeField] float movementY;
     public float MovementY { get => movementY; }
-
-    private void Awake()
-    {
-        if(instance == null) instance = this;
-        else
-        {
-            Destroy(this.gameObject);
-            Debug.LogWarning("Another '" + this.gameObject.name + "' has been deleted !");
-        }
-    }
 
     void Update()
     {
