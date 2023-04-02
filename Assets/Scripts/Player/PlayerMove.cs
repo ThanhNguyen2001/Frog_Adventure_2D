@@ -19,7 +19,6 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] bool canDoubleJump;
 
     [Header("WallCollision Info")]
-    
     [SerializeField] float wallCheckDistance, wallSlideSpeed;
     [SerializeField] bool isWallDetected;
     [SerializeField] bool canWallSlide;
@@ -29,12 +28,13 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] float facingDirection = 1;
     [SerializeField] Vector2 wallJumpDirection;
 
-    [SerializeField] float timeCount;
-    [SerializeField] float timeLimit;
     [SerializeField] bool outOfWall;
 
     public Rigidbody2D Body { get => body;}
     public bool FacingRight { get => facingRight; }
+    public bool CanDoubleJump { get => canDoubleJump; }
+    public bool IsWallSliding { get => isWallSliding; }
+    public bool IsGrounded { get => isGrounded; }
 
 
     private void Start()
@@ -47,14 +47,13 @@ public class PlayerMove : MonoBehaviour
         this.JumpController();
         this.CollisionCheck();
         this.FlipController();
-        this.StateAnimation();
         this.WallSlideFast();
     }
 
     void Moving()
     {
         if (isWallDetected) this.canDoubleJump = true;
-        if (this.isGrounded) this.canDoubleJump = true;  
+        if (isGrounded) this.canDoubleJump = true;  
 
         if (canWallSlide)
         {
@@ -131,33 +130,15 @@ public class PlayerMove : MonoBehaviour
         this.body.velocity = new Vector2(wallJumpDirection.x * -facingDirection, jumpForce);
         AudioCtrl.Instance.GetAudioPool(AudioCtrl.Instance.AudioJump, AudioCtrl.Instance.AudioJumps);
     }
-    void StateAnimation()
-    {
-        if (PlayerController.Instance.PlayerAnimation.StateAnim == AnimationCtrl.AnimationState.IsHitted)
-        {
-            timeCount += Time.deltaTime;
-            if (timeCount < timeLimit) return;
-            timeCount = 0;
-        }        
-
-        if (this.body.velocity.x != 0) PlayerController.Instance.PlayerAnimation.MovingAnim();
-        else PlayerController.Instance.PlayerAnimation.IdleAnim();
-
-        if (this.body.velocity.y > 0)
-        {
-            if (canDoubleJump)
-                PlayerController.Instance.PlayerAnimation.JumpAnim();
-            else
-                PlayerController.Instance.PlayerAnimation.DoubleJumpAnim();
-        }
-        else if (this.body.velocity.y < 0) PlayerController.Instance.PlayerAnimation.FallAnim();
-
-        if (isWallSliding && !isGrounded) PlayerController.Instance.PlayerAnimation.WallSlideAnim();
-    }
 
     public void SetMoveForce(float moveForce)
     {
         this.moveForce = moveForce;
+    }
+
+    public void SetJumpForce(float jumpForce)
+    {
+        this.jumpForce = jumpForce;
     }
 
     void CollisionCheck()

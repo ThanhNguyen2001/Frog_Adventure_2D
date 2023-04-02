@@ -44,6 +44,7 @@ public class PlayerCollision : MonoBehaviour
         if (collision.gameObject.CompareTag("Complete"))
         {
             PlayerController.Instance.PlayerMove.SetMoveForce(0f);
+            PlayerController.Instance.PlayerMove.SetJumpForce(0f);
             AudioCtrl.Instance.AudioLevelComplete.gameObject.SetActive(true);
             StartCoroutine(waitForWin());
         }
