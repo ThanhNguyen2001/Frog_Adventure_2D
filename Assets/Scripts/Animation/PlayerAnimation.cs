@@ -23,7 +23,7 @@ public class PlayerAnimation : MonoBehaviour
     private void Update()
     {
         GameManager.Instance.AnimationCtrl.GetAnimation(stateAnim, animator);
-        StateAnimation();
+        this.StateAnimation();
     }
 
     public void setStateAnim(AnimationCtrl.AnimationState stateAnim)
@@ -33,7 +33,7 @@ public class PlayerAnimation : MonoBehaviour
 
     void StateAnimation()
     {
-        if (PlayerController.Instance.PlayerAnimation.StateAnim == AnimationCtrl.AnimationState.IsHitted)
+        if (this.StateAnim == AnimationCtrl.AnimationState.IsHitted)
         {
             timeCount += Time.deltaTime;
             if (timeCount < timeLimit) return;

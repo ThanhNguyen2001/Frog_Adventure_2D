@@ -13,7 +13,6 @@ public class PlayerMove : MonoBehaviour
 
     [Header("Collision Info")]
     [SerializeField] float groundCheckDistance;
-    [SerializeField] float groundCheckRadius;
     [SerializeField] LayerMask whatIsGround, whatIsWall;
     [SerializeField] bool isGrounded;
     [SerializeField] bool canDoubleJump;
@@ -143,7 +142,9 @@ public class PlayerMove : MonoBehaviour
 
     void CollisionCheck()
     {
-        isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, whatIsGround);
+        isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, whatIsGround) ||
+                    Physics2D.Raycast(transform.position + new Vector3(0.32f, 0f, 0f), Vector2.down, groundCheckDistance, whatIsGround) ||
+                    Physics2D.Raycast(transform.position + new Vector3(-0.28f, 0f, 0f), Vector2.down, groundCheckDistance, whatIsGround);
         isWallDetected = Physics2D.Raycast(transform.position, Vector2.right * facingDirection, wallCheckDistance, whatIsWall);
 
         if (isWallDetected && this.body.velocity.y < 0)
