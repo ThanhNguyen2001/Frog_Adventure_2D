@@ -70,6 +70,7 @@ public class PlayerCollision : MonoBehaviour
         if (collision.gameObject.CompareTag("Item"))
         {
             PlayerController.Instance.starCtrl.count++;
+            MapCtrl.Instance.collectItem.SetFruitCount();
             AudioCtrl.Instance.GetAudioPool(AudioCtrl.Instance.AudioCollectItem, AudioCtrl.Instance.AudioCollectItems);
         }
     }
