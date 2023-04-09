@@ -7,6 +7,9 @@ public class PlayerCollision : MonoBehaviour
 {
     [Header("Trap Info")]
     [SerializeField] bool collisionTrap;
+    [SerializeField] bool isCompleted;
+
+    public bool IsCompleted { get => isCompleted;}
 
     private void Update()
     {
@@ -43,6 +46,7 @@ public class PlayerCollision : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Complete"))
         {
+            this.isCompleted = true;
             PlayerController.Instance.PlayerMove.SetMoveForce(0f);
             PlayerController.Instance.PlayerMove.SetJumpForce(0f);
             AudioCtrl.Instance.AudioLevelComplete.gameObject.SetActive(true);

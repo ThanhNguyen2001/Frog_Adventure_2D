@@ -8,7 +8,11 @@ public class PlayerRD : MonoBehaviour
     [SerializeField] Rigidbody2D body;
     [SerializeField] int hp, maxHp;
     [SerializeField] bool isDeducted, isAdded;
+    [SerializeField] bool isGameOver;
     [SerializeField] List<GameObject> pools;
+
+    public bool IsGameOver { get => isGameOver;}
+
     private void Update()
     {
         if(isAdded)
@@ -50,6 +54,7 @@ public class PlayerRD : MonoBehaviour
     {
         if (hp <= 0)
         {
+            this.isGameOver = true;
             this.body.simulated = false;
             AudioCtrl.Instance.AudioGameOver.gameObject.SetActive(true);
             PlayerController.Instance.PlayerAnimation.setStateAnim(AnimationCtrl.AnimationState.Desappear);
