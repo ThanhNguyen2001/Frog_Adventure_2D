@@ -13,9 +13,20 @@ public class PlayerRD : MonoBehaviour
 
     public bool IsGameOver { get => isGameOver;}
 
+    private void Start()
+    {
+        this.maxHp = this.hp;
+    }
+
     private void Update()
     {
-        if(isAdded)
+        this.Check();
+        this.Die();
+    }
+
+    void Check()
+    {
+        if (isAdded)
         {
             isAdded = false;
             if (pools.Count <= 0) return;
@@ -23,19 +34,14 @@ public class PlayerRD : MonoBehaviour
             pools.Remove(pools[pools.Count - 1]);
         }
 
-        if(isDeducted && this.hp >= 0)
+        if (isDeducted && this.hp >= 0)
         {
             isDeducted = false;
             UIManager.Instance.HeartUI.transform.GetChild(hp).gameObject.SetActive(false);
             pools.Add(UIManager.Instance.HeartUI.transform.GetChild(hp).gameObject);
         }
-        this.Die();
-    }
+    }    
 
-    private void Start()
-    {
-        this.maxHp = this.hp;
-    }
     public void Deduct()
     {
         this.isDeducted = true;

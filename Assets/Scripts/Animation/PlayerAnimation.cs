@@ -50,7 +50,7 @@ public class PlayerAnimation : MonoBehaviour
             else
                 this.DoubleJumpAnim();
         }
-        else if (PlayerController.Instance.PlayerMove.Body.velocity.y < 0) this.FallAnim();
+        else if (PlayerController.Instance.PlayerMove.Body.velocity.y < 0 && !PlayerController.Instance.PlayerMove.IsGrounded) this.FallAnim();
 
         if (PlayerController.Instance.PlayerMove.IsWallSliding && !PlayerController.Instance.PlayerMove.IsGrounded)
             this.WallSlideAnim();

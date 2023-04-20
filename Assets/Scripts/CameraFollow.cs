@@ -36,7 +36,7 @@ public class CameraFollow : MonoBehaviour
 
 
     }
-    void Update()
+    void LateUpdate()
     {
         this.CameraFollowPlayer();
     }
@@ -48,7 +48,8 @@ public class CameraFollow : MonoBehaviour
         if(GameManager.Instance.Player.transform.position.x > 0f && GameManager.Instance.Player.transform.position.x < this.endFollowX)
             cameraPos.x = GameManager.Instance.Player.transform.position.x;
 
-        if (GameManager.Instance.Player.transform.position.y > this.startFollowY && GameManager.Instance.Player.transform.position.y < this.endFollowY)
+        if (GameManager.Instance.Player.transform.position.y > this.startFollowY 
+            && GameManager.Instance.Player.transform.position.y < this.endFollowY)
             cameraPos.y = GameManager.Instance.Player.transform.position.y;
 
         this.transform.position = cameraPos;

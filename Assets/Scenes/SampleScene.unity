@@ -5219,9 +5219,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6e88a3b559b8184faabff597000564d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  endFollowX: 91
+  endFollowX: 0
   startFollowY: 0
-  endFollowY: 20
+  endFollowY: 0
 --- !u!1 &1024371465
 GameObject:
   m_ObjectHideFlags: 0

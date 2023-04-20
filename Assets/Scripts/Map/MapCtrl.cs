@@ -18,4 +18,5 @@ public class MapCtrl : MonoBehaviour
     }
 
     public CollectItem collectItem;
+
 }

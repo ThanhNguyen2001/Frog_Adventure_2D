@@ -17,6 +17,7 @@ public class SpikeHeadMoving : MonoBehaviour
         this.body = this.GetComponent<Rigidbody2D>();
         target = point2.position;
     }
+
     private void Update()
     {
         this.Moving();

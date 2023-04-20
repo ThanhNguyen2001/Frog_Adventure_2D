@@ -77,6 +77,12 @@ public class PlayerCollision : MonoBehaviour
             MapCtrl.Instance.collectItem.SetFruitCount();
             AudioCtrl.Instance.GetAudioPool(AudioCtrl.Instance.AudioCollectItem, AudioCtrl.Instance.AudioCollectItems);
         }
+
+        if (collision.gameObject.CompareTag("Trap"))
+        {
+            collisionTrap = true;
+            AudioCtrl.Instance.GetAudioPool(AudioCtrl.Instance.AudioCollisionTrap, AudioCtrl.Instance.AudioCollisionTraps);
+        }
     }
 
     IEnumerator waitForWin()
