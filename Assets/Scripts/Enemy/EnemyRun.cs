@@ -9,7 +9,6 @@ public class EnemyRun : MonoBehaviour
     [SerializeField] EnemyCtrl enemyCtrl;
     [SerializeField] EnemyAnimation2 enemyAnimation2;
     [SerializeField] Rigidbody2D body;
-    [SerializeField] Animator animator;
     [SerializeField] Transform point1, point2;
     [SerializeField] Vector3 target = Vector3.zero;
     [SerializeField] float moveForce, moveForceCurrent;
@@ -18,7 +17,6 @@ public class EnemyRun : MonoBehaviour
 
     private void Start()
     {
-        body = transform.parent.GetComponent<Rigidbody2D>();
         target = point2.position;
         moveForceCurrent = moveForce;
         timeLimitOld = timeLimit;
@@ -36,7 +34,7 @@ public class EnemyRun : MonoBehaviour
         Vector3 dir = target - this.transform.parent.position;
         dir.Normalize();
 
-        this.body.velocity = new Vector2(moveForce, 0f) * dir;
+        enemyCtrl.Body.velocity = new Vector2(moveForce, 0f) * dir;
 
         this.SetAnim();
         this.Flip();
@@ -90,7 +88,7 @@ public class EnemyRun : MonoBehaviour
                 enemyAnimation2.SetAnim(AnimationCtrl.EnemyAnimationState1.Run);
             else
             {
-                if (this.body.velocity.x != 0)
+                if (enemyCtrl.Body.velocity.x != 0)
                     enemyAnimation2.SetAnim(AnimationCtrl.EnemyAnimationState1.Moving);
                 else
                     enemyAnimation2.SetAnim(AnimationCtrl.EnemyAnimationState1.Idle);
@@ -101,9 +99,9 @@ public class EnemyRun : MonoBehaviour
 
     void Flip()
     {
-        if (this.body.velocity.x > 0 && !facingRight)
+        if (enemyCtrl.Body.velocity.x > 0 && !facingRight)
             this.FipX();
-        else if(this.body.velocity.x < 0 && facingRight)
+        else if(enemyCtrl.Body.velocity.x < 0 && facingRight)
             this.FipX();
     }
 

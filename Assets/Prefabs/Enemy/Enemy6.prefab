@@ -28774,50 +28774,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!1 &1264124398299535653
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1264124398299535654}
-  - component: {fileID: 1264124398299535655}
-  m_Layer: 11
-  m_Name: AnimationCtrl
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1264124398299535654
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1264124398299535653}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1264124398473653025}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1264124398299535655
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1264124398299535653}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c25c3459a5ae5b346aa7dd6d816f1814, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1264124398473653024
 GameObject:
   m_ObjectHideFlags: 0
@@ -28830,7 +28786,7 @@ GameObject:
   - component: {fileID: 1264124398473653026}
   - component: {fileID: 1264124398473653031}
   - component: {fileID: 1264124398473653028}
-  - component: {fileID: 1264124398473653032}
+  - component: {fileID: 4310336929524562754}
   - component: {fileID: 1264124398473653030}
   m_Layer: 11
   m_Name: Enemy6
@@ -28853,7 +28809,6 @@ Transform:
   m_Children:
   - {fileID: 1264124398139627905}
   - {fileID: 1264124397636875616}
-  - {fileID: 1264124398299535654}
   - {fileID: 1264124398820192099}
   m_Father: {fileID: 6701302357503453965}
   m_RootOrder: 0
@@ -28908,8 +28863,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGrounded: 0
-  enemyCollision: {fileID: 1264124398473653032}
---- !u!114 &1264124398473653032
+  enemyCollision: {fileID: 4310336929524562754}
+  body: {fileID: 1264124398473653026}
+  animator: {fileID: 1264124398139627935}
+--- !u!114 &4310336929524562754
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -28918,14 +28875,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1264124398473653024}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7836624de6704494ea78b77c6a08378a, type: 3}
+  m_Script: {fileID: 11500000, guid: 0efa1e717821d7343a29e7e6c7e368f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 1264124398139627904}
   _particleSystem: {fileID: 1264124398820192102}
   enemyCtrl: {fileID: 1264124398473653028}
   animator: {fileID: 1264124398139627935}
-  body: {fileID: 1264124398473653026}
   collider2: {fileID: 1264124398473653031}
   dir: {x: 0, y: 0}
   dying: 0
@@ -38497,7 +38453,7 @@ Transform:
   - {fileID: 1264124396998496831}
   - {fileID: 1264124397780293599}
   m_Father: {fileID: 1264124398473653025}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &1264124398820192102
 ParticleSystem:

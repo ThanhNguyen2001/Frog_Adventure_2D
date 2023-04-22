@@ -7,10 +7,7 @@ public class EnemyCollision : MonoBehaviour
 {
     [SerializeField] protected SpriteRenderer spriteRenderer;
     [SerializeField] protected ParticleSystem _particleSystem;
-    [SerializeField] protected EnemyCtrl enemyCtrl;
-    [SerializeField] protected Animator animator;
 
-    [SerializeField] protected Rigidbody2D body;
     [SerializeField] protected Collider2D collider2;
     [SerializeField] protected Vector2 dir = Vector2.zero;
     [SerializeField] protected bool dying;

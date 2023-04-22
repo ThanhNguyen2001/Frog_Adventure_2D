@@ -7,7 +7,6 @@ public class EnemyAttack : MonoBehaviour
     [SerializeField] EnemyCtrl enemyCtrl;
     [SerializeField] EnemyAnimation5 enemyAnimation5;
     [SerializeField] Rigidbody2D body;
-    [SerializeField] Animator animator;
     [SerializeField] float moveForce, moveForceCurrent;
     [SerializeField] bool facingRight = true;
     [SerializeField] float timeCount, timeLimit;
@@ -29,7 +28,7 @@ public class EnemyAttack : MonoBehaviour
     {
         if (enemyCtrl.EnemyCollision.Dying)
         {
-            this.body.velocity = new Vector2(0f, 0f);
+            enemyCtrl.Body.velocity = new Vector2(0f, 0f);
             return;
         }
 
@@ -39,7 +38,7 @@ public class EnemyAttack : MonoBehaviour
             moveForce += moveForceCurrent;
             if (moveForce >= 10)
                 moveForce = 10;
-            this.body.velocity = new Vector2(moveForce * transform.right.x, this.body.velocity.y);
+            enemyCtrl.Body.velocity = new Vector2(moveForce * transform.right.x, enemyCtrl.Body.velocity.y);
         }   
     }
 
@@ -50,7 +49,7 @@ public class EnemyAttack : MonoBehaviour
         else
         {
            
-            if (this.body.velocity.x != 0)
+            if (enemyCtrl.Body.velocity.x != 0)
                 enemyAnimation5.SetAnim(AnimationCtrl.EnemyAnimationState4.Run);           
             else
                 enemyAnimation5.SetAnim(AnimationCtrl.EnemyAnimationState4.Idle);
@@ -69,9 +68,9 @@ public class EnemyAttack : MonoBehaviour
 
     void Flip()
     {
-        if (this.body.velocity.x > 0 && !facingRight)
+        if (enemyCtrl.Body.velocity.x > 0 && !facingRight)
             this.FlipX();
-        else if (this.body.velocity.x < 0 && facingRight)
+        else if (enemyCtrl.Body.velocity.x < 0 && facingRight)
             this.FlipX();
     }
 
@@ -88,7 +87,7 @@ public class EnemyAttack : MonoBehaviour
         if (isWallDetected)
         {
             this.isHitWall = true;
-            this.body.AddForce(new Vector2(0, moveY), ForceMode2D.Impulse);
+            enemyCtrl.Body.AddForce(new Vector2(0, moveY), ForceMode2D.Impulse);
             moveForce = 0;
             FlipX();
         }

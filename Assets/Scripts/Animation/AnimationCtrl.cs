@@ -141,4 +141,25 @@ public class AnimationCtrl : MonoBehaviour
         Idle,
         IsHitted
     }
+
+    public void GetEnemyAnimation5(EnemyAnimationState5 anim, Animator animator)
+    {
+        for (int i = 0; i <= (int)EnemyAnimationState5.IsHitted; i++)
+        {
+            string animName = ((EnemyAnimationState5)i).ToString();
+            if (animName == anim.ToString())
+            {
+                animator.SetBool(animName, true);
+                continue;
+            }
+            animator.SetBool(animName, false);
+        }
+    }
+
+    public enum EnemyAnimationState5
+    {
+        Idle,
+        Attack,
+        IsHitted
+    }
 }

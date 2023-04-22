@@ -10,7 +10,6 @@ public class EnemyFly : MonoBehaviour
     [SerializeField] EnemyCtrl enemyCtrl;
     [SerializeField] EnemyAnimation3 enemyAnimation3;
     [SerializeField] Rigidbody2D body;
-    [SerializeField] Animator animator;
     [SerializeField] Transform point1, point2;
     [SerializeField] Vector3 target = Vector3.zero;
     [SerializeField] float moveForce, moveForceCurrent;
@@ -18,7 +17,6 @@ public class EnemyFly : MonoBehaviour
 
     private void Start()
     {
-        body = transform.parent.GetComponent<Rigidbody2D>();
         target = point1.position;
       
         moveForceCurrent = moveForce;
@@ -36,7 +34,7 @@ public class EnemyFly : MonoBehaviour
         Vector3 dir = target - this.transform.parent.position;
         dir.Normalize();
 
-        this.body.velocity = dir * moveForce;
+        enemyCtrl.Body.velocity = dir * moveForce;
 
         this.SetAnim();;
     }
@@ -80,7 +78,7 @@ public class EnemyFly : MonoBehaviour
         if(enemyCtrl.EnemyCollision.Dying) enemyAnimation3.SetAnim(AnimationCtrl.EnemyAnimationState2.IsHitted);
         else
         {
-            if (this.body.velocity.y >= 0)
+            if (enemyCtrl.Body.velocity.y >= 0)
             {
                 if (this.target == point2.position)
                     enemyAnimation3.SetAnim(AnimationCtrl.EnemyAnimationState2.Ground);

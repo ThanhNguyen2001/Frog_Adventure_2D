@@ -9,7 +9,6 @@ public class EnemyMoving : MonoBehaviour
     [SerializeField] EnemyCtrl enemyCtrl;
     [SerializeField] EnemyAnimation1 enemyAnimation1;
     [SerializeField] Rigidbody2D body;
-    [SerializeField] Animator animator;
     [SerializeField] Transform point1, point2;
     [SerializeField] Vector3 target = Vector3.zero;
     [SerializeField] float moveForce, moveForceCurrent;
@@ -18,7 +17,6 @@ public class EnemyMoving : MonoBehaviour
 
     private void Start()
     {
-        body = transform.parent.GetComponent<Rigidbody2D>();
         target = point2.position;
         moveForceCurrent = moveForce;
     }
@@ -35,7 +33,7 @@ public class EnemyMoving : MonoBehaviour
         Vector3 dir = target - this.transform.parent.position;
         dir.Normalize();
 
-        this.body.velocity = new Vector2(moveForce, 0f) * dir;
+        enemyCtrl.Body.velocity = new Vector2(moveForce, 0f) * dir;
 
         this.SetAnim();
         this.Flip();
@@ -71,7 +69,7 @@ public class EnemyMoving : MonoBehaviour
         if(enemyCtrl.EnemyCollision.Dying) enemyAnimation1.SetAnim(AnimationCtrl.EnemyAnimationState.IsHitted);
         else
         {
-            if (this.body.velocity.x != 0)
+            if (enemyCtrl.Body.velocity.x != 0)
                 enemyAnimation1.SetAnim(AnimationCtrl.EnemyAnimationState.Moving);
             else
                 enemyAnimation1.SetAnim(AnimationCtrl.EnemyAnimationState.Idle);
@@ -81,9 +79,9 @@ public class EnemyMoving : MonoBehaviour
 
     void Flip()
     {
-        if (this.body.velocity.x > 0 && !facingRight)
+        if (enemyCtrl.Body.velocity.x > 0 && !facingRight)
             this.FipX();
-        else if(this.body.velocity.x < 0 && facingRight)
+        else if(enemyCtrl.Body.velocity.x < 0 && facingRight)
             this.FipX();
     }
 

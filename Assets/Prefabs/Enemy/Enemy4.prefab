@@ -1,49 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3714453121517206298
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 331394260988156858}
-  - component: {fileID: 7571514028106440872}
-  m_Layer: 11
-  m_Name: AnimationCtrl
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &331394260988156858
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3714453121517206298}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7446988892660431141}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7571514028106440872
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3714453121517206298}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c25c3459a5ae5b346aa7dd6d816f1814, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4979483751216840513
 GameObject:
   m_ObjectHideFlags: 0
@@ -47718,7 +47674,7 @@ Transform:
   - {fileID: 4979483751216866169}
   - {fileID: 4979483751216866151}
   m_Father: {fileID: 7446988892660431141}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &4979483751235216959
 ParticleSystem:
@@ -52619,10 +52575,8 @@ MonoBehaviour:
   target: {x: 0, y: 0, z: 0}
   moveForce: 5
   moveForceCurrent: 0
-  facingRight: 1
   timeCount: 0
   timeLimit: 2
-  timeLimitOld: 0
 --- !u!1 &7446988892660431131
 GameObject:
   m_ObjectHideFlags: 0
@@ -52658,7 +52612,6 @@ Transform:
   m_Children:
   - {fileID: 7446988894093880213}
   - {fileID: 7446988892262445318}
-  - {fileID: 331394260988156858}
   - {fileID: 4979483751216866175}
   m_Father: {fileID: 1177525319502436446}
   m_RootOrder: 0
@@ -52740,7 +52693,6 @@ MonoBehaviour:
   _particleSystem: {fileID: 4979483751235216959}
   enemyCtrl: {fileID: 3885654152810454355}
   animator: {fileID: 7446988894093880203}
-  body: {fileID: 7446988892660431130}
   collider2: {fileID: 2958368072349672493}
   dir: {x: 0, y: 0}
   dying: 0

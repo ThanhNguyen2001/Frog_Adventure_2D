@@ -7,7 +7,6 @@ public class EnemyFollow : MonoBehaviour
     [SerializeField] EnemyCtrl enemyCtrl;
     [SerializeField] EnemyAnimation4 enemyAnimation4;
     [SerializeField] Rigidbody2D body;
-    [SerializeField] Animator animator;
     [SerializeField] Vector3 dir, posOld;
     [SerializeField] float moveForce, moveForceCurrent;
     [SerializeField] bool facingRight = true;
@@ -29,7 +28,7 @@ public class EnemyFollow : MonoBehaviour
     {
         if (enemyCtrl.EnemyCollision.Dying)
         {
-            this.body.velocity = new Vector2(0f, 0f);
+            enemyCtrl.Body.velocity = new Vector2(0f, 0f);
             return;
         }
 
@@ -49,7 +48,7 @@ public class EnemyFollow : MonoBehaviour
         }
 
         dir.Normalize();
-        this.body.velocity = dir * moveForce;      
+        enemyCtrl.Body.velocity = dir * moveForce;      
     }
 
     void SetAnim()
@@ -58,7 +57,7 @@ public class EnemyFollow : MonoBehaviour
         if (enemyCtrl.EnemyCollision.Dying) enemyAnimation4.SetAnim(AnimationCtrl.EnemyAnimationState3.IsHitted);
         else
         {
-            if (this.body.velocity.x != 0 || this.body.velocity.y != 0)
+            if (enemyCtrl.Body.velocity.x != 0 || enemyCtrl.Body.velocity.y != 0)
                 enemyAnimation4.SetAnim(AnimationCtrl.EnemyAnimationState3.Flying);
             else
                 enemyAnimation4.SetAnim(AnimationCtrl.EnemyAnimationState3.Idle);
@@ -68,9 +67,9 @@ public class EnemyFollow : MonoBehaviour
 
     void Flip()
     {
-        if (this.body.velocity.x > 0 && !facingRight)
+        if (enemyCtrl.Body.velocity.x > 0 && !facingRight)
             this.FipX();
-        else if (this.body.velocity.x < 0 && facingRight)
+        else if (enemyCtrl.Body.velocity.x < 0 && facingRight)
             this.FipX();
     }
 
