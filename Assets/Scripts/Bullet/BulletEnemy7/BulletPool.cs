@@ -4,21 +4,6 @@ using UnityEngine;
 
 public class BulletPool : MonoBehaviour
 {
-    #region Singleton
-    static BulletPool instance;
-    public static BulletPool Instance { get => instance; }
-
-    private void Awake()
-    {
-        if (instance == null) instance = this;
-        else
-        {
-            Destroy(this.gameObject);
-            Debug.LogWarning("Other " + this.gameObject.name + " has been deleted !");
-        }
-    }
-    #endregion
-
     [SerializeField] GameObject bullet;
     [SerializeField] List<GameObject> bullets;
 

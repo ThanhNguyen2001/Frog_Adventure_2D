@@ -1,18 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
 
-public class EnemyMoving : MonoBehaviour
+public class Enemy8Moving : MonoBehaviour
 {
     [SerializeField] EnemyCtrl enemyCtrl;
-    [SerializeField] EnemyAnimation1 enemyAnimation1;
+    [SerializeField] EnemyAnimation7 enemyAnimation7;
     [SerializeField] Transform point1, point2;
     [SerializeField] Vector3 target = Vector3.zero;
     [SerializeField] float moveForce, moveForceCurrent;
     [SerializeField] bool facingRight = true;
     [SerializeField] float timeCount, timeLimit;
+
+    public bool FacingRight => facingRight;
 
     private void Start()
     {
@@ -31,6 +31,18 @@ public class EnemyMoving : MonoBehaviour
 
         Vector3 dir = target - this.transform.parent.position;
         dir.Normalize();
+   
+        timeCount += Time.deltaTime;
+        if (timeCount > timeLimit / 2 && timeCount < timeLimit)
+        {
+            moveForce = 0;
+        }
+
+        if (timeCount > timeLimit)
+        {
+            moveForce = moveForceCurrent;
+            timeCount = 0;
+        }
 
         enemyCtrl.Body.velocity = new Vector2(moveForce, 0f) * dir;
 
@@ -40,18 +52,13 @@ public class EnemyMoving : MonoBehaviour
 
     void CheckDistance(Transform point1, Transform point2)
     {
-        if(enemyCtrl.EnemyCollision.Dying)
+        if (enemyCtrl.EnemyCollision.Dying)
         {
             moveForce = 0;
             return;
         }
-        moveForce = moveForceCurrent;
         if (Vector2.Distance(target, this.transform.parent.position) <= 0.5f)
         {
-            moveForce = 0;
-            timeCount += Time.deltaTime;
-            if (timeCount < timeLimit) return;
-            timeCount = 0;
             if (target == point2.position)
                 target = point1.position;
             else if (target == point1.position)
@@ -65,22 +72,23 @@ public class EnemyMoving : MonoBehaviour
     }
     void SetAnim()
     {
-        if(enemyCtrl.EnemyCollision.Dying) enemyAnimation1.SetAnim(AnimationCtrl.EnemyAnimationState.IsHitted);
+        if (enemyCtrl.EnemyCollision.Dying) enemyAnimation7.SetAnim(AnimationCtrl.EnemyAnimationState6.IsHitted);
         else
         {
             if (enemyCtrl.Body.velocity.x != 0)
-                enemyAnimation1.SetAnim(AnimationCtrl.EnemyAnimationState.Moving);
+                enemyAnimation7.SetAnim(AnimationCtrl.EnemyAnimationState6.Run);
             else
-                enemyAnimation1.SetAnim(AnimationCtrl.EnemyAnimationState.Idle);
+                enemyAnimation7.SetAnim(AnimationCtrl.EnemyAnimationState6.Attack);
+                
         }
-        
+
     }
 
     void Flip()
     {
         if (enemyCtrl.Body.velocity.x > 0 && !facingRight)
             this.FipX();
-        else if(enemyCtrl.Body.velocity.x < 0 && facingRight)
+        else if (enemyCtrl.Body.velocity.x < 0 && facingRight)
             this.FipX();
     }
 
@@ -88,5 +96,5 @@ public class EnemyMoving : MonoBehaviour
     {
         facingRight = !facingRight;
         this.transform.parent.Rotate(0, 180, 0);
-    }   
+    }
 }

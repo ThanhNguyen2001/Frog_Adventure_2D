@@ -9,12 +9,10 @@ public class EnemyCtrl : MonoBehaviour
     [SerializeField] Rigidbody2D body;
     [SerializeField] Animator animator;
     [SerializeField] EnemyCollision enemyCollision;
-    [SerializeField] EnemyAnimation6 enemyAnimation6;
 
     public Rigidbody2D Body { get => body; }
     public Animator Animator { get => animator; }
     public EnemyCollision EnemyCollision { get => enemyCollision; }
-    public EnemyAnimation6 EnemyAnimation6 { get => enemyAnimation6; }
 
     private void Start()
     {
