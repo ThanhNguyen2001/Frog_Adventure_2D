@@ -225,7 +225,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 1659305477
-  m_SortingOrder: 1
+  m_SortingOrder: 1001
   m_TargetDisplay: 0
 --- !u!1 &39163936
 GameObject:
@@ -13427,7 +13427,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1659305477
   m_SortingLayer: 3
-  m_SortingOrder: 0
+  m_SortingOrder: 1000
   m_Sprite: {fileID: -6367560908665664636, guid: cd947491a13509945aa1b644f9db3ef2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -13614,7 +13614,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 1659305477
-  m_SortingOrder: 2
+  m_SortingOrder: 1001
   m_TargetDisplay: 0
 --- !u!224 &1716646251
 RectTransform:

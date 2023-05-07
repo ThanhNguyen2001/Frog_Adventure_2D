@@ -20,7 +20,7 @@ public class HitBlock : MonoBehaviour
 
         if (isHitted && isCollsion)
         {
-            PlayerController.Instance.PlayerMove.Body.velocity = new Vector2(PlayerController.Instance.PlayerMove.Body.velocity.x, 15f);
+            PlayerController.Instance.PlayerMove.Body.velocity = new Vector2(PlayerController.Instance.PlayerMove.Body.velocity.x, 10f);
             animator.SetBool("Hit", true);
             colli.enabled = false;
             isCollsion = false;

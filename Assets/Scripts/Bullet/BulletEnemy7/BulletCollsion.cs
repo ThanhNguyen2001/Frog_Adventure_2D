@@ -8,7 +8,7 @@ public class BulletCollsion : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Player"))
         {
-            PlayerController.Instance.PlayerRD.Deduct();
+            //PlayerController.Instance.PlayerRD.Deduct();
             this.gameObject.SetActive(false);
         }
 

@@ -32,8 +32,9 @@ public class EnemyAttack : MonoBehaviour
             return;
         }
 
-        if ((GameManager.Instance.Player.transform.position.y - this.transform.parent.transform.parent.position.y > -1f) && (GameManager.Instance.Player.transform.position.y - this.transform.parent.transform.parent.position.y < 4f) &&
-            Mathf.Abs(GameManager.Instance.Player.transform.position.x - this.transform.parent.transform.parent.position.x) < 4f)
+        if ((GameManager.Instance.Player.transform.position.y - this.transform.parent.transform.parent.position.y > -1f) 
+            && (GameManager.Instance.Player.transform.position.y - this.transform.parent.transform.parent.position.y < 5f) &&
+            Mathf.Abs(GameManager.Instance.Player.transform.position.x - this.transform.parent.transform.parent.position.x) < 10f)
         {
             moveForce += moveForceCurrent;
             if (moveForce >= 10)

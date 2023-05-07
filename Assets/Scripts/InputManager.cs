@@ -40,7 +40,7 @@ public class InputManager : MonoBehaviour
     void InputController()
     {
        this.pause = Input.GetKeyDown(KeyCode.Escape);
-       this.jump = Input.GetKeyDown(KeyCode.Space);
+       this.jump = Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W);
        this.movementX = Input.GetAxisRaw("Horizontal");
        this.movementY = Input.GetAxisRaw("Vertical");
     }

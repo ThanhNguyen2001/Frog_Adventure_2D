@@ -33,7 +33,7 @@ public class PlayerCollision : MonoBehaviour
             this.transform.SetParent(collision.gameObject.transform);
         }
 
-        if (collision.gameObject.CompareTag("Trap"))
+        if (collision.gameObject.CompareTag("Trap") || collision.gameObject.CompareTag("Bullet"))
         {
             collisionTrap = true;
             AudioCtrl.Instance.GetAudioPool(AudioCtrl.Instance.AudioCollisionTrap, AudioCtrl.Instance.AudioCollisionTraps);
